@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Plugin.Geolocator;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +17,7 @@ namespace meteoApp.Views
 		public MeteoListPage ()
 		{
 			InitializeComponent ();
+            GetLocation();
             BindingContext = new MeteoListViewModel();
 		}
 
@@ -36,6 +39,16 @@ namespace meteoApp.Views
                     BindingContext = e.SelectedItem as Entry
                 });
             }
+        }
+        async void GetLocation()
+        {
+            var locator = CrossGeolocator.Current;
+            var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(10));
+
+            Debug.WriteLine("Position Status: {0}", position.Timestamp);
+            Debug.WriteLine("Position Latitude: {0}", position.Latitude);
+            Debug.WriteLine("Position Longitude: {0}", position.Longitude);
+
         }
     }
 }
