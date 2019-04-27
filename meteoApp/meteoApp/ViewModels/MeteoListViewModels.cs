@@ -20,17 +20,8 @@ namespace meteoApp
         public MeteoListViewModel()
         {
             Entries = new ObservableCollection<Entry>();
-
-            for (var i = 0; i < 10; i++)
-            {
-                var e = new Entry
-                {
-                    ID = i,
-                    Name = "Entry " + i
-                };
-
-                Entries.Add(e);
-            }
+            Entries.Add(new Entry());
+      
         }
     }
 }
