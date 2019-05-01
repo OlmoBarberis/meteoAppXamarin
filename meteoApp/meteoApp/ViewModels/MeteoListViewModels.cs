@@ -21,19 +21,7 @@ namespace meteoApp
         {
             Entries = new ObservableCollection<Entry>();
 
-            for (var i = 0; i < 10; i++)
-            {
-                var e = new Entry
-                {
-                    ID = i,
-                    Name = "Entry " + i,
-                    MinTemperature = 20.0,
-                    MaxTemperature = 25.0,
-                    CurrentTemperature = 23.0
-                };
-
-                Entries.Add(e);
-            }
+            Entries.Add(new Entry());
         }
     }
 }
