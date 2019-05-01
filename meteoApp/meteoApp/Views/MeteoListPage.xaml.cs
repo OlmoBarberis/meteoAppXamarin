@@ -38,10 +38,10 @@ namespace meteoApp.Views{
         {
             if (e.SelectedItem != null)
             {
-                Navigation.PushAsync(new MeteoItemPage(e.SelectedItem as Entry));
-                //{
-                //    BindingContext = e.SelectedItem as Entry
-                //});
+                Navigation.PushAsync(new MeteoItemPage(e.SelectedItem as Entry)
+                {
+                    BindingContext = e.SelectedItem as Entry
+                });
             }
         }
 
