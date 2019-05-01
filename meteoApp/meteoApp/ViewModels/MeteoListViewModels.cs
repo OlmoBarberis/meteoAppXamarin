@@ -26,7 +26,10 @@ namespace meteoApp
                 var e = new Entry
                 {
                     ID = i,
-                    Name = "Entry " + i
+                    Name = "Entry " + i,
+                    MinTemperature = 20.0,
+                    MaxTemperature = 25.0,
+                    CurrentTemperature = 23.0
                 };
 
                 Entries.Add(e);

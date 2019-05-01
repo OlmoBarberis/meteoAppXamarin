@@ -35,4 +35,27 @@
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a01d.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a01n.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a02d.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a02n.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a03d.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a03n.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a04d.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a04n.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a09d.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a09n.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a10d.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a10n.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a11d.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a11n.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a13d.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a13n.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a50d.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a50n.png" />
+  </ItemGroup>
 </Project>
