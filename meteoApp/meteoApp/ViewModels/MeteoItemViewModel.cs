@@ -5,6 +5,7 @@ namespace meteoApp
     public class MeteoItemViewModel : BaseViewModel
     {
         Entry _entry;
+
         public Entry Entry
         {
             get { return _entry; }
