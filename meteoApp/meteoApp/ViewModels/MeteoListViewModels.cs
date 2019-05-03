@@ -21,16 +21,18 @@ namespace meteoApp
         {
             Entries = new ObservableCollection<Entry>();
 
-            for (var i = 0; i < 10; i++)
+            var e = new Entry
             {
-                var e = new Entry
-                {
-                    ID = i,
-                    Name = "Entry " + i
-                };
+                ID = 0,
+                Name = "Current Location"
+            };
 
-                Entries.Add(e);
+            Entries.Add(e);
+            foreach (Entry entry in App.Database.GetEntryAsync().Result)
+            {
+                Entries.Add(entry);
             }
+
         }
     }
 }

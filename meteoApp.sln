@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.539
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "meteoApp.Android", "meteoApp\meteoApp.Android\meteoApp.Android.csproj", "{1D3F50AA-4E83-4D29-BE01-EC99B625ACCA}"
 EndProject
@@ -85,7 +85,6 @@ Global
 		{8CF2EE15-515A-4F41-A330-60552F82E1DE}.AppStore|iPhoneSimulator.Build.0 = AppStore|iPhoneSimulator
 		{8CF2EE15-515A-4F41-A330-60552F82E1DE}.AppStore|iPhoneSimulator.Deploy.0 = AppStore|iPhoneSimulator
 		{8CF2EE15-515A-4F41-A330-60552F82E1DE}.Debug|Any CPU.ActiveCfg = Debug|iPhoneSimulator
-		{8CF2EE15-515A-4F41-A330-60552F82E1DE}.Debug|Any CPU.Build.0 = Debug|iPhoneSimulator
 		{8CF2EE15-515A-4F41-A330-60552F82E1DE}.Debug|Any CPU.Deploy.0 = Debug|iPhoneSimulator
 		{8CF2EE15-515A-4F41-A330-60552F82E1DE}.Debug|iPhone.ActiveCfg = Debug|iPhone
 		{8CF2EE15-515A-4F41-A330-60552F82E1DE}.Debug|iPhone.Build.0 = Debug|iPhone

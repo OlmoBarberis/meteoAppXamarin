@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Acr.UserDialogs;
 
 namespace meteoApp.Droid
 {
@@ -18,7 +19,7 @@ namespace meteoApp.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, savedInstanceState);
-
+            UserDialogs.Init(this);
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());

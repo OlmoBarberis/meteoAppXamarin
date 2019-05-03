@@ -3,44 +3,79 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using System.Net.Http;
 using Xamarin.Forms.Xaml;
 using Xamarin.Forms;
 using System.Threading.Tasks;
-using System.Net.Http;
 using Newtonsoft.Json.Linq;
+using System.Diagnostics;
+using Plugin.Geolocator;
 
 namespace meteoApp.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class MeteoItemPage : ContentPage
-	{
-        private string openWKey = "inserire la key openweathermap";
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class MeteoItemPage : ContentPage
+    {
+        private string openWKey = "cc3c629069bce6858e29dedf0f73213a";
+        private Entry entry;
+        private double lat;
+        private double lon;
+        public MeteoItemPage(Entry e)
+        {
+            entry = e;
+            BindingContext = new MeteoItemViewModel(e);
+            InitializeComponent();
+            Debug.WriteLine("Loaded: " + BindingContext.ToString());
+            if (e.Name.Equals("Current Location"))
+            {
+                _ = GetWeatherFromPosition();
+            }
+            else
+            {
+                _ = GetWeather(e.Name);
+            }
+        }
 
-		public MeteoItemPage ()
-		{
-			InitializeComponent ();
-
-            GetWeather("London");
-            GetWeather(42.02, 8.91);
-		}
+        private async Task<String> GetLocation()
+        {
+            var locator = CrossGeolocator.Current;
+            var position = await locator.GetPositionAsync();
+            lat = position.Latitude;
+            lon = position.Longitude;
+            if (lat != 0 && lon != 0)
+                return "found";
+            return "not found";
+        }
 
         private async Task GetWeather(String location)
         {
             var httpClient = new HttpClient();
-            var content = await httpClient.GetStringAsync("https://api.openweathermap.org/data/2.5/weather?q=" + location + "&units=metric&appid="+ openWKey);
+            var content = await httpClient.GetStringAsync("https://api.openweathermap.org/data/2.5/weather?q=" + location + "&units=metric&appid=" + openWKey);
 
             var weather = (string)JObject.Parse(content)["weather"][0]["main"];
 
+            Debug.WriteLine("Weather: " + weather);
+            Debug.WriteLine("Place: " + entry.Name);
+
             //aggiornare la ui secondo i dati ricevuti
             //Weather.Text = weather;
+
         }
 
-        private async Task GetWeather(double lat, double lon)
+        private async Task GetWeatherFromPosition()
         {
+            var locator = CrossGeolocator.Current;
+            var position = await locator.GetPositionAsync();
+            lat = position.Latitude;
+            lon = position.Longitude;
             var httpClient = new HttpClient();
             var content = await httpClient.GetStringAsync("https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=metric&appid=" + openWKey);
 
             var weather = (string)JObject.Parse(content)["weather"][0]["main"];
+
+            Debug.WriteLine("Weather: " + weather);
+            Debug.WriteLine("Latitude: " + lat);
+            Debug.WriteLine("Longitude: " + lon);
 
             //aggiornare la ui secondo i dati ricevuti
             //Weather.Text = weather;

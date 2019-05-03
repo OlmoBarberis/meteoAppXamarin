@@ -1,25 +1,25 @@
 ﻿using Plugin.Geolocator;
 using System;
+using Acr.UserDialogs;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace meteoApp.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class MeteoListPage : ContentPage
-	{
-		public MeteoListPage ()
-		{
-			InitializeComponent ();
-            GetLocation();
-            BindingContext = new MeteoListViewModel();
-		}
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class MeteoListPage : ContentPage
+    {
+        MeteoListViewModel meteoListViewModel = new MeteoListViewModel();
+        public MeteoListPage()
+        {
+            InitializeComponent();
+            BindingContext = meteoListViewModel;
+        }
 
         protected override void OnAppearing()
         {
@@ -28,27 +28,40 @@ namespace meteoApp.Views
 
         void OnItemAdded(object sender, EventArgs e)
         {
-            DisplayAlert("Messaggio", "Testo", "OK");
+            Debug.WriteLine("OnItemAdded");
+
+            //          /!\ FUNZIONA SOLO SU ANDROID!  /!\ 
+
+            ShowPrompt(this);
         }
         void OnListItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             if (e.SelectedItem != null)
             {
-                Navigation.PushAsync(new MeteoItemPage()
-                {
-                    BindingContext = e.SelectedItem as Entry
-                });
+                Navigation.PushAsync(new MeteoItemPage(e.SelectedItem as Entry));
             }
         }
-        async void GetLocation()
+        
+        private async Task ShowPrompt(MeteoListPage instance)
         {
-            var locator = CrossGeolocator.Current;
-            var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(10));
-
-            Debug.WriteLine("Position Status: {0}", position.Timestamp);
-            Debug.WriteLine("Position Latitude: {0}", position.Latitude);
-            Debug.WriteLine("Position Longitude: {0}", position.Longitude);
-
+            Debug.WriteLine("Show Prompt");
+            var pResult = await UserDialogs.Instance.PromptAsync(new PromptConfig
+            {
+                InputType = InputType.Name,
+                OkText = "Create",
+                Title = "New Entry",
+            });
+            // esempio: creo una nuova Entry partendo dal testo e la aggiungo al ViewModel
+            if (pResult.Ok && !string.IsNullOrWhiteSpace(pResult.Text))
+            {
+                var newEntry = new Entry
+                {
+                    ID = (int)(meteoListViewModel.Entries.LongCount()),
+                    Name = pResult.Text
+                };
+                meteoListViewModel.Entries.Add(newEntry);
+                App.Database.SaveEntryAsync(newEntry);
+            }
         }
     }
 }

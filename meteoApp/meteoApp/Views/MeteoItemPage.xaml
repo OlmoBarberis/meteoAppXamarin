@@ -4,7 +4,7 @@
              x:Class="meteoApp.Views.MeteoItemPage">
     <ContentPage.Content>
         <RelativeLayout x:Name="container">
-            <Label Text="{Binding Name}" 
+            <Label Text="{Binding Entry.Name}" 
                 RelativeLayout.XConstraint="{ConstraintExpression
                     Type=RelativeToParent,
                     Property=Width,
