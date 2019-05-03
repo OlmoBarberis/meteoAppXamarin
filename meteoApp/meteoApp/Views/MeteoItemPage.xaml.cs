@@ -17,15 +17,17 @@ namespace meteoApp.Views
     public partial class MeteoItemPage : ContentPage
     {
         private string openWKey = "cc3c629069bce6858e29dedf0f73213a";
-        //private Entry entry;
+        private Entry oldEntry;
 
         public MeteoItemPage(Entry e)
         {
             InitializeComponent();
 
+            oldEntry = e;
+             
             BindingContext = new MeteoItemViewModel(e);
             
-            if(e.ID == 0)
+            if(e.Name.Equals("Current Location"))
             {
                 GetWeatherFromPosition();
             } else
@@ -44,10 +46,9 @@ namespace meteoApp.Views
             var entry = new Entry();
             Debug.WriteLine("Weather: " + weather);
 
-            //aggiornare la ui secondo i dati ricevuti
             entry.Name = location;
-            Debug.WriteLine("Name: " + entry.Name);
 
+            //Get data from response
             entry.CurrentTemperature = (double)JObject.Parse(content)["main"]["temp"];
             Debug.WriteLine("Current: " + entry.CurrentTemperature);
 
@@ -57,8 +58,7 @@ namespace meteoApp.Views
             entry.MinTemperature = (double)JObject.Parse(content)["main"]["temp_min"];
             Debug.WriteLine("Min: " + entry.MinTemperature);
 
-
-
+            //Update View through ViewModel 
             var temp = BindingContext as MeteoItemViewModel;
             temp.Entry = entry;
         }
@@ -76,8 +76,8 @@ namespace meteoApp.Views
 
             var weather = (string)JObject.Parse(content)["weather"][0]["main"];
 
-            //aggiornare la ui secondo i dati ricevuti
-            entry.Name = (string)JObject.Parse(content)["city"]["name"];
+            //Get data from response
+            entry.Name = oldEntry.Name;
             Debug.WriteLine("Name: " + entry.Name);
 
             entry.CurrentTemperature = (double)JObject.Parse(content)["main"]["temp"];
@@ -89,6 +89,7 @@ namespace meteoApp.Views
             entry.MinTemperature = (double)JObject.Parse(content)["main"]["temp_min"];
             Debug.WriteLine("Min: " + entry.MinTemperature);
 
+            //Update View through ViewModel 
             var temp = BindingContext as MeteoItemViewModel;
             temp.Entry = entry;
         }
