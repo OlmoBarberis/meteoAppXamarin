@@ -29,7 +29,7 @@ namespace meteoApp.Views
 
         void OnItemAdded(object sender, EventArgs e)
         {
-            ShowPrompt(this);            
+            _ = ShowPrompt(this);            
         }
 
         void OnListItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -62,6 +62,7 @@ namespace meteoApp.Views
                 meteoListViewModel.Entries.Add(entry);
 
                 await App.Database.SaveEntryAsync(entry);
+
             }
         }
 
