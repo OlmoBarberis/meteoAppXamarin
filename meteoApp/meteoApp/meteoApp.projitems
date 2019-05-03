@@ -15,9 +15,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Database\MeteoDatabase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Database\Database.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Entry.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MeteoItemViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MeteoListViewModels.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\_BaseViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\MeteoItemPage.xaml.cs">
@@ -38,8 +37,26 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="C:\Users\olmob\Progetti\meteoAppXamarin\meteoApp\meteoApp\Views\Page1.xaml.cs">
-      <DependentUpon>Page1.xaml</DependentUpon>
-    </Compile>
+    <Folder Include="$(MSBuildThisFileDirectory)Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a01d.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a01n.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a02d.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a02n.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a03d.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a03n.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a04d.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a04n.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a09d.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a09n.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a10d.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a10n.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a11d.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a11n.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a13d.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a13n.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a50d.png" />
+    <AndroidResource Include="$(MSBuildThisFileDirectory)Resources\a50n.png" />
   </ItemGroup>
 </Project>

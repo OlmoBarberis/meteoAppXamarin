@@ -52,14 +52,15 @@ namespace meteoApp.Views
             var httpClient = new HttpClient();
             var content = await httpClient.GetStringAsync("https://api.openweathermap.org/data/2.5/weather?q=" + location + "&units=metric&appid=" + openWKey);
 
-            var weather = (string)JObject.Parse(content)["weather"][0]["main"];
+            //var weather = (string)JObject.Parse(content)["weather"][0]["main"]["temp"];
 
             Debug.WriteLine("Weather: " + weather);
             Debug.WriteLine("Place: " + entry.Name);
 
             //aggiornare la ui secondo i dati ricevuti
-            //Weather.Text = weather;
-
+            entry.CurrentTemperature = (double)JObject.Parse(content)["weather"][0]["main"]["temp"];
+            entry.MaxTemperature = (double)JObject.Parse(content)["weather"][0]["main"]["temp_max"];
+            entry.MinTemperature = (double)JObject.Parse(content)["weather"][0]["main"]["temp_min"];
         }
 
         private async Task GetWeatherFromPosition()

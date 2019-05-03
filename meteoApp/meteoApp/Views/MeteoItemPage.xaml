@@ -1,20 +1,37 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="meteoApp.Views.MeteoItemPage">
     <ContentPage.Content>
-        <RelativeLayout x:Name="container">
-            <Label Text="{Binding Entry.Name}" 
-                RelativeLayout.XConstraint="{ConstraintExpression
-                    Type=RelativeToParent,
-                    Property=Width,
-                    Factor=0.5,
-                    Constant=-25}"
-               RelativeLayout.YConstraint="{ConstraintExpression
-                   Type=RelativeToParent,
-                   Property=Height,
-                   Factor=0.5,
-                   Constant=-25}"></Label>
-        </RelativeLayout>
+
+        <StackLayout Spacing="30">
+            <Label 
+                Text="{Binding Name}"
+                HorizontalTextAlignment="Center"
+                FontSize="45" 
+                HorizontalOptions="Center">
+            </Label>
+            <Image Margin="30" Source="a01d" Scale="4"></Image>
+            <StackLayout Orientation="Horizontal">
+                <Label 
+                    Text="{Binding MinTemperature, StringFormat='Min: {0}°C'}" 
+                    HorizontalTextAlignment="Center"
+                    FontSize="40" 
+                    HorizontalOptions="FillAndExpand">
+                </Label>
+                <Label 
+                    Text="{Binding MaxTemperature, StringFormat='Max: {0}°C'}" 
+                    HorizontalTextAlignment="Center"
+                    FontSize="40"
+                    HorizontalOptions="FillAndExpand">
+                </Label>
+            </StackLayout>
+            <Label 
+                    Text="{Binding MinTemperature, StringFormat='Now: {0}°C'}" 
+                    HorizontalTextAlignment="Center"
+                    FontSize="40"
+                    VerticalOptions="FillAndExpand">
+                </Label>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -24,6 +24,7 @@ namespace meteoApp
             var e = new Entry
             {
                 ID = 0,
+<<<<<<< HEAD
                 Name = "Current Location"
             };
 
@@ -33,6 +34,15 @@ namespace meteoApp
                 Entries.Add(entry);
             }
 
+=======
+                Name = "Entry " + 0,
+                MinTemperature = 20.0,
+                MaxTemperature = 25.0,
+                CurrentTemperature = 23.0
+            };
+
+            Entries.Add(e);
+>>>>>>> 4286e1af867551b68a4a0c0a33d78823c2fee1f3
         }
     }
 }

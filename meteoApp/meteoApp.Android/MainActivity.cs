@@ -17,6 +17,7 @@ namespace meteoApp.Droid
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
+            UserDialogs.Init(this);
 
             Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, savedInstanceState);
             UserDialogs.Init(this);
