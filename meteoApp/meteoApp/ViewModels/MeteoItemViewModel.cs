@@ -17,7 +17,7 @@ namespace meteoApp
 
         public MeteoItemViewModel(Entry entry)
         {
-            Entry = entry;
+            _entry = entry;
         }
     }
 }

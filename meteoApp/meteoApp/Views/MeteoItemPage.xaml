@@ -5,29 +5,29 @@
     <ContentPage.Content>
 
         <StackLayout Spacing="30">
-            <Label 
-                Text="{Binding Name}"
+            <Label  x:Name="LocationName"
+                Text="{Binding Entry.Name}"
                 HorizontalTextAlignment="Center"
                 FontSize="45" 
                 HorizontalOptions="Center">
             </Label>
             <Image Margin="30" Source="a01d" Scale="4"></Image>
             <StackLayout Orientation="Horizontal">
-                <Label 
-                    Text="{Binding MinTemperature, StringFormat='Min: {0}°C'}" 
+                <Label x:Name="MinTemp"
+                    Text="{Binding Entry.MinTemperature, StringFormat='Min: {0}°C'}" 
                     HorizontalTextAlignment="Center"
                     FontSize="40" 
                     HorizontalOptions="FillAndExpand">
                 </Label>
-                <Label 
-                    Text="{Binding MaxTemperature, StringFormat='Max: {0}°C'}" 
+                <Label x:Name="MaxTemp"
+                    Text="{Binding Entry.MaxTemperature, StringFormat='Max: {0}°C'}" 
                     HorizontalTextAlignment="Center"
                     FontSize="40"
                     HorizontalOptions="FillAndExpand">
                 </Label>
             </StackLayout>
-            <Label 
-                    Text="{Binding MinTemperature, StringFormat='Now: {0}°C'}" 
+            <Label x:Name="CurrentTemp"
+                    Text="{Binding Entry.CurrentTemperature, StringFormat='Now: {0}°C'}" 
                     HorizontalTextAlignment="Center"
                     FontSize="40"
                     VerticalOptions="FillAndExpand">

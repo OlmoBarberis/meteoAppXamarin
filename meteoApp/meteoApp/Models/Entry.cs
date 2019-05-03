@@ -10,4 +10,5 @@ namespace meteoApp
         public double MaxTemperature { get; set; }
         public double CurrentTemperature { get; set; }
     }
+
 }
