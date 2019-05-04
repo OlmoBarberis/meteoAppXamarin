@@ -42,9 +42,7 @@ namespace meteoApp.Views
             var httpClient = new HttpClient();
             var content = await httpClient.GetStringAsync("https://api.openweathermap.org/data/2.5/weather?q=" + location + "&units=metric&appid=" + openWKey);
 
-            var weather = (string)JObject.Parse(content)["weather"][0]["main"];
             var entry = new Entry();
-            Debug.WriteLine("Weather: " + weather);
 
             entry.Name = location;
 
@@ -57,6 +55,10 @@ namespace meteoApp.Views
 
             entry.MinTemperature = (double)JObject.Parse(content)["main"]["temp_min"];
             Debug.WriteLine("Min: " + entry.MinTemperature);
+
+            entry.Weather = "https://openweathermap.org/img/w/" + (string)JObject.Parse(content)["weather"][0]["icon"] + ".png";
+            Debug.WriteLine("Weather: " + entry.Weather);
+
 
             //Update View through ViewModel 
             var temp = BindingContext as MeteoItemViewModel;
@@ -73,9 +75,7 @@ namespace meteoApp.Views
 
             var content = await httpClient.GetStringAsync("https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=metric&appid=" + openWKey);
             var entry = new Entry();
-
-            var weather = (string)JObject.Parse(content)["weather"][0]["main"];
-
+            
             //Get data from response
             entry.Name = oldEntry.Name;
             Debug.WriteLine("Name: " + entry.Name);
@@ -88,6 +88,9 @@ namespace meteoApp.Views
 
             entry.MinTemperature = (double)JObject.Parse(content)["main"]["temp_min"];
             Debug.WriteLine("Min: " + entry.MinTemperature);
+
+            entry.Weather = "https://openweathermap.org/img/w/" + (string)JObject.Parse(content)["weather"][0]["icon"] + ".png";
+            Debug.WriteLine("Weather: " + entry.Weather);
 
             //Update View through ViewModel 
             var temp = BindingContext as MeteoItemViewModel;

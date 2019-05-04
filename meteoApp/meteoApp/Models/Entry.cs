@@ -9,6 +9,7 @@ namespace meteoApp
         public double MinTemperature { get; set; }
         public double MaxTemperature { get; set; }
         public double CurrentTemperature { get; set; }
+        public string Weather { get; set;  }
     }
 
 }

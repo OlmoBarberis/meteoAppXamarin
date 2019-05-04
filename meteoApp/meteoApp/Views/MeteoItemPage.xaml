@@ -11,7 +11,7 @@
                 FontSize="45" 
                 HorizontalOptions="Center">
             </Label>
-            <Image Margin="30" Source="a01d" Scale="4"></Image>
+            <Image Margin="30" Scale="8" x:Name="ImageWeather" Source="{Binding Entry.Weather}"></Image>
             <StackLayout Orientation="Horizontal">
                 <Label x:Name="MinTemp"
                     Text="{Binding Entry.MinTemperature, StringFormat='Min: {0}°C'}" 
